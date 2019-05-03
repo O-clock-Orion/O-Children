@@ -5,6 +5,22 @@ services:
     container_name: app-prod
     build:
       context: .
-      dockerfile: Dockerfile-prod
+      dockerfile: Dockerfile-client
+      args:
+        - ENV=prod
+    volumes:
+      - project:/src/dist
+      - '/src/node_modules'
+
+  server:
+    container_name: server
+    build:
+      context: .docker/
+      dockerfile: Dockerfile-nginx
     ports:
       - '80:80'
+    volumes:
+      - project:/usr/share/nginx/html:nocopy
+
+volumes:
+  project:
