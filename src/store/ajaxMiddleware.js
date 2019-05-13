@@ -23,12 +23,7 @@ const ajaxMiddleware = store => next => action => {
 
     case DATA_HOME_GAME: // Requete qui récupère les données nécessaire pour la page home
       return axios
-        .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/categories/${
-            action.categoryId
-          }/`,
-          {}
-        )
+        .get(`http://92.243.9.67/plateforme-educative-api/public/api/worlds/${action.categoryId}/`)
         .then(response => {
           next({
             ...action,

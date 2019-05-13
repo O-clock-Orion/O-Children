@@ -14,7 +14,7 @@ class HomeGame extends Component {
     return (
       <div className="homeGame">
         <div className="homeGame-title">
-          <h1 />
+          <h1> { dataHomeGame.description } </h1>
         </div>
         <GameMenu category={category} />
       </div>
@@ -24,14 +24,7 @@ class HomeGame extends Component {
 
 HomeGame.propTypes = {
   category: PropTypes.string.isRequired,
-  dataHomeGame: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      description: PropTypes.string,
-      image: PropTypes.string
-    })
-  ).isRequired
+  dataHomeGame: PropTypes.object.isRequired,
 };
 
 export default HomeGame;
