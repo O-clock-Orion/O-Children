@@ -10,7 +10,6 @@ class HomeGame extends Component {
 
   render() {
     const { category, dataHomeGame } = this.props;
-    console.log(dataHomeGame);
     return (
       <div className="homeGame">
         <div className="homeGame-title">

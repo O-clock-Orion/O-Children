@@ -16,20 +16,21 @@ import {
   getMessage,
   getMyScore,
   answerIsTrue,
-  messageScore
+  messageScore,
+  getQuestionsByQuizId
 } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
   questionsOfQuiz: state.questionsOfQuiz,
   responses: state.responses,
-  loading: state.loading,
+  loaded: state.loaded,
   indexQuiz: state.indexQuiz,
   disabledButton: state.disabledButton,
   message: state.message,
   score: state.score,
   myScore: state.myScore,
   answerTrue: state.answerTrue,
-  messageScore: messageScore(state)
+  messageScore: messageScore(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -50,7 +51,10 @@ const mapDispatchToProps = dispatch => ({
   },
   answerIsTrue: () => {
     dispatch(answerIsTrue());
-  }
+  },
+  getQuestionsByQuizId: (id) => {
+    dispatch(getQuestionsByQuizId(id));
+  },
 });
 
 export default connect(

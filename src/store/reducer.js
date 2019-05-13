@@ -21,15 +21,15 @@ const initialState = {
   categoriesQuizzs: [],
   currentSlugCatAge: '',
   currrentSlugCatQuizzs: '',
-  quizzsByCategoryId: [],
+  quizzsByWorldId: [],
   idCatAge: '',
   questionsOfQuiz: [],
-  loading: false,
+  loaded: false,
   disabledButton: true,
   message: '',
   score: 0,
   myScore: false,
-  answerTrue: false
+  answerTrue: false,
 };
 
 /**
@@ -48,7 +48,6 @@ const INCREMENT_INDEX_QUIZ = 'INCREMENT_INDEX_QUIZ';
 export const CATEGORIES_QUIZZS = 'CATEGORIES_QUIZZS';
 const CURRENT_SLUG_CAT_AGE = 'CURRENT_SLUG_CAT_AGE';
 const CURRENT_SLUG_CAT_QUIZZS = 'CURRENT_SLUG_CAT_QUIZZS';
-export const QUIZZS_BY_ID = 'QUIZZS_BY_ID';
 export const QUESTION_BY_ID = 'QUESTION_BY_ID';
 const RECEIVED_DATA_QUESTIONS = 'RECEIVED_DATA_QUESTIONS';
 const CHOSEN_ANSWER = 'CHOSEN_ANSWER';
@@ -57,6 +56,7 @@ const GET_MESSAGE = 'GET_MESSAGE';
 const MY_SCORE = 'MY_SCORE';
 const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
+export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 
 /**
  * Traitements
@@ -118,21 +118,23 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currrentSlugCatQuizzs: action.slug
       };
-    case QUIZZS_BY_ID:
+    case QUIZ_BY_WORLD_ID:
       return {
         ...state,
-        quizzsByCategoryId: action.data
+        quizzsByWorldId: action.data
       };
     case QUESTION_BY_ID:
       return {
         ...state,
-        loading: true
+        loaded: false,
       };
     case RECEIVED_DATA_QUESTIONS:
       return {
         ...state,
-        loading: false,
-        questionsOfQuiz: action.data
+        loaded: true,
+        questionsOfQuiz: [
+          ...action.data,
+        ]
       };
     case CHOSEN_ANSWER:
       return {
@@ -200,11 +202,6 @@ export const currentSlugCatQuizzs = slug => ({
   slug
 });
 
-export const getQuizzsById = id => ({
-  type: QUIZZS_BY_ID,
-  id
-});
-
 export const dataForHomePage = () => ({
   type: DATA_HOME_PAGE
 });
@@ -214,9 +211,14 @@ export const dataForHomeGame = categoryId => ({
   categoryId
 });
 
+export const getQuizByWorldId = worldId => ({
+  type: QUIZ_BY_WORLD_ID,
+  worldId,
+})
+
 export const getQuestionsByQuizId = id => ({
   type: QUESTION_BY_ID,
-  id
+  id,
 });
 
 export const getMyScore = () => ({
