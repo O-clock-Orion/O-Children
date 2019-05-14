@@ -1,5 +1,6 @@
 import axios from 'axios';
 import shuffle from 'shuffle-array';
+
 import {
   DATA_HOME_PAGE,
   CATEGORIES_QUIZZS,
@@ -48,6 +49,7 @@ const ajaxMiddleware = store => next => action => {
         
       })
         .then((response) => {
+
           next({
             ...action,
             data: response.data,
@@ -60,19 +62,18 @@ const ajaxMiddleware = store => next => action => {
       break;
     case QUESTION_BY_ID:
       next(action);
-      return axios
-        .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/quizzs/${
-            action.id
-          }`
-        )
-        .then(response => {
+      axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/quizzs/${action.id}`, {
+        
+      })
+        .then((response) => {
           response.data.questions.map(data => shuffle(data.answers));
-          store.dispatch(
-            receivedDataQuestions(shuffle(response.data.questions))
-          );
+          store.dispatch(receivedDataQuestions(shuffle(response.data.questions)))
+        })
+        .catch((error) => {
+          console.log(error);
+          
         });
-
+      break;
     default:
       return next(action);
   }

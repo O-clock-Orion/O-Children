@@ -27,25 +27,30 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/home-game/:category/puzzle" component={MyPuzzle} />
-      <Route
-        path="/home-game/:category/categories"
+      <Route exact path="/home-game/:category/puzzle" component={MyPuzzle} />
+      <Route // is ok
+        exact
+        strict
+        path="/categories"
         component={CategoriesQuizzs}
       />
-      <Route path="/home-game/:worldId/:catQuizzs/:quizId"
+      <Route exact path="/quiz/:quizId"
         render={({ match }) => {
           const { quizId } = match.params;
+
           return <Quiz quizId={quizId} />;
         }}
       />
       <Route
-        path="/home-game/:worldId/:catQuizName"
+        exact
+        path="/category/:worldId"
         render={({ match }) => {
           const { worldId, catQuizName } = match.params;
           return <Quizzs worldId={worldId} catQuizName={catQuizName}/>;
         }}
       />
-      <Route
+      <Route // is ok
+        exact
         path="/home-game/:category"
         render={({ match }) => {
           const { category } = match.params;

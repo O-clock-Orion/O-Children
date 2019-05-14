@@ -44,7 +44,7 @@ class Quiz extends Component {
 
   render() {
     const { loaded, myScore, questionsOfQuiz, indexQuiz, message, answerTrue, handleClickButtonNext, disabledButton, getMyScore, score, messageScore } = this.props;
-
+    console.log(questionsOfQuiz);
     return loaded && !myScore ? (
       <div className={myScore ? 'quiz quiz--score' : 'quiz'}>
         <div className="quiz-questions">

@@ -57,6 +57,7 @@
     "@babel/polyfill": "*",
     "axios": "*",
     "classnames": "*",
+    "history": "^4.9.0",
     "http-server": "^0.11.1",
     "prop-types": "*",
     "react": "16.7.0-alpha.2",

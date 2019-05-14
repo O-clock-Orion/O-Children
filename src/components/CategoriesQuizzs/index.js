@@ -18,12 +18,12 @@ class CategoriesQuizzs extends Component {
 
         <div className="wrapper-categories">
           {categoriesQuizzs.map(({ id, name, image }) => {
-
+            
             return (
               <Link
                 key={id}
                 className="categories-quiz"
-                to={`/home-game/${id}/${name}`}
+                to={`/category/${id}`}
               >
                 <img src={`/src/assets/img/${image}`} alt="icon" />
                 <span>{name}</span>

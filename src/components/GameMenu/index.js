@@ -10,13 +10,13 @@ const GameMenu = ({ category }) => {
       <nav className="gameMenu-nav">
         <ul>
           <li>
-            <Link to={`${category}/discovery`}>
+            <Link to="/discovery">
               <FaGamepad size="3em" />
               <span>Discovery</span>
             </Link>
           </li>
           <li>
-            <Link to={`/home-game/${category}/categories`}>
+            <Link to="/categories">
               <FaCheckSquare size="2em" className="gameMenu-icon--square" />
               <span className="gameMenu-link--quiz">Quiz</span>
             </Link>

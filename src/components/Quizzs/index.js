@@ -26,7 +26,7 @@ class Quizzs extends Component {
             <div className="quizzs-quiz" key={quiz.quizzs[0].id}>
               <Link
                 onClick={this.handleClick(quiz.quizzs[0].id)}
-                to={`/home-game/${quiz.quizzs[0].world.id}/${quiz.name}/${quiz.quizzs[0].id}`}
+                to={`/quiz/${quiz.quizzs[0].id}`}
               >
                 {quiz.quizzs[0].title}
               </Link>
