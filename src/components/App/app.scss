@@ -1,5 +1,8 @@
 body {
-  background-image: url('http://localhost:3000/src/assets/img/clouds.png');
-  background-repeat: no-repeat;
-  background-position: contain;
+  background: url('http://images.easyfreeclipart.com/171/blue-clouds-background-cloud-blue2-19029417-1920-9861--171807.jpg')
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
