@@ -1,9 +1,7 @@
 /**
  * Npm import
  */
-import {
-  connect
-} from 'react-redux';
+import { connect } from 'react-redux';
 
 /**
  * Local import
@@ -11,25 +9,22 @@ import {
 import ForgottenPassword from 'src/components/Login/ForgottenPassword';
 
 // Action Creators
-import {
-  handleLoginChange,
-  forgottenSubmit
-} from 'src/store/reducer';
+import { handleLoginChange, forgottenSubmit } from 'src/store/reducer';
 
-const mapStateToProps = (state, ownProps) => ({
-  email: state.userForm.email
+const mapStateToProps = state => ({
+  email: state.loginForm.email
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   handleChange: (text, name) => dispatch(handleLoginChange(text, name)),
-  handleForgottenSubmit: () => dispatch(forgottenSubmit()),
+  handleForgottenSubmit: () => dispatch(forgottenSubmit())
 });
 
 // Container
 // connect(Ce dont j'ai besoin)(Qui en a besoin)
 const ForgottenPasswordContainer = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(ForgottenPassword);
 
 /**

@@ -10,7 +10,7 @@ class LoginForm extends VerifyForm {
   constructor(props) {
     super(props);
 
-    this.verify.init(['username', 'password']);
+    this.verify.init(['email']);
 
     this.verify.setErrorComp(text => (
       <span style={{ color: 'red' }}>{text}</span>
@@ -49,11 +49,12 @@ class LoginForm extends VerifyForm {
 
   handleSubmit = evt => {
     evt.preventDefault();
+    if (this.props.loading) return;
     this.props.onLoginSubmit();
   };
 
   render() {
-    const { password, email, loading, error, loggedIn } = this.props;
+    const { password, email, error, loading, loggedIn } = this.props;
     if (loggedIn) return <Redirect to="/" />;
     return (
       <Form className="login-form" onSubmit={this.handleSubmit}>
@@ -99,7 +100,7 @@ class LoginForm extends VerifyForm {
         </Form.Field>
         <div className="ui two buttons">
           <Button
-            disabled={loading && this.verify.verifyAll()}
+            disabled={this.verify.verifyAll()}
             loading={loading}
             id="connexion"
           >
