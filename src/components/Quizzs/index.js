@@ -7,7 +7,11 @@ import './index.scss';
 
 class Quizzs extends Component {
   componentDidMount() {
-    this.props.getQuizByWorldId(this.props.categoryQuizId)
+    const { getQuizByWorldId, categoryQuizId, handleGetUserInfos, loggedIn } = this.props;
+
+    if (loggedIn) handleGetUserInfos();
+    getQuizByWorldId(categoryQuizId)
+    
   }
 
   handleClick = () => () => {
@@ -15,8 +19,15 @@ class Quizzs extends Component {
     initialQuiz();
   };
 
+  handleClickFav = quizId => () => {
+    console.log('send');
+    const { toggleFavoris } = this.props;
+    toggleFavoris(quizId);
+  }
+
   render() {
     const { quizzsByWorldId } = this.props;
+    // console.log(quizzsByWorldId);
     return (
       <div className="quizzs">
 
@@ -29,7 +40,7 @@ class Quizzs extends Component {
               >
                 {quiz.quizzs[0].title}
               </Link>
-              <FaRegHeart color="#000" className="quizzs-fav" />
+              <FaRegHeart onClick={this.handleClickFav(quiz.quizzs[0].id)} color="#000" className="quizzs-fav" />
             </div>
           ))}
         </div>

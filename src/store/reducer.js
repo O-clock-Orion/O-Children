@@ -109,6 +109,9 @@ export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
 // User
 export const GET_USER_INFOS = 'GET_USER_INFOS';
 
+// Favoris
+export const TOGGLE_FAVORIS = 'TOGGLE_FAVORIS';
+
 /**
  * Traitements
  */
@@ -564,6 +567,11 @@ export const getUserInfos = data => ({
   type: GET_USER_INFOS,
   data
 });
+
+export const toggleFavoris = (quizId) => ({
+  type: TOGGLE_FAVORIS,
+  quizId,
+})
 
 /**
  * Selectors

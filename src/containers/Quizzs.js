@@ -8,10 +8,11 @@ import { connect } from 'react-redux';
 import Quizzs from 'src/components/Quizzs';
 
 // Action Creators
-import { getQuestionsByQuizId, initialQuiz, getQuizByWorldId } from 'src/store/reducer';
+import { getQuestionsByQuizId, initialQuiz, getQuizByWorldId, getUserInfos, toggleFavoris } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
   quizzsByWorldId: state.quizzsByWorldId,
+  loggedIn: state.loggedIn,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -23,7 +24,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getQuizByWorldId: (worldId) => {
     dispatch(getQuizByWorldId(worldId));
-  }
+  },
+  handleGetUserInfos: () => dispatch(getUserInfos()),
+  toggleFavoris: (quizId) => dispatch(toggleFavoris(quizId)),
 });
 
 export default connect(
