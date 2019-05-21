@@ -106,17 +106,12 @@ const RESET_MEMORY = 'RESET_MEMORY';
 export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
 export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
 
-<<<<<<< HEAD
 // User
 export const GET_USER_INFOS = 'GET_USER_INFOS';
 
 // Favoris
 export const TOGGLE_FAVORIS = 'TOGGLE_FAVORIS';
 
-=======
-// Favoris
-export const ADD_OR_DELETE_FAV = 'ADD_OR_DELETE_FAV';
->>>>>>> 312e983619f06a3ef3636cf30b286f12faaf0558
 /**
  * Traitements
  */
@@ -576,10 +571,6 @@ export const getUserInfos = data => ({
 export const toggleFavoris = (quizId) => ({
   type: TOGGLE_FAVORIS,
   quizId,
-})
-
-export const addOrDeleteFav = () => ({
-  type: ADD_OR_DELETE_FAV,
 })
 
 /**

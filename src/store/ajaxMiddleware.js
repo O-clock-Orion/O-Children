@@ -77,7 +77,7 @@ const ajaxMiddleware = store => next => action => {
         });
     case TOGGLE_FAVORIS:
       // console.log(store.getState().loggedUserInfos.token);
-      axios.post(`${process.env.API_URL}/api/users/${store.getState().loggedUserInfos.userId}/bookmarks/quizzs/${action.quizId}/toggle`, {
+      axios.post(`${process.env.API_URL}/api/users/${store.getState().loggedUserInfos.userId}/bookmarks/puzzles/${action.quizId}/toggle`, {
         headers: {
           Authorization: `Bearer ${store.getState().loggedUserInfos.token}`,
         },
@@ -177,7 +177,6 @@ const ajaxMiddleware = store => next => action => {
         .post(`${process.env.API_URL}/api/signup`, signUpObject)
         .then(() => store.dispatch(signedUp()))
         .catch(() => store.dispatch(signeUpError()));
-<<<<<<< HEAD
 
     case GET_USER_INFOS:
       if (!store.getState().loggedIn) return store.dispatch(getPage404());
@@ -194,22 +193,6 @@ const ajaxMiddleware = store => next => action => {
         )
         .then(console.log);
 
-=======
-    case ADD_OR_DELETE_FAV:
-      return axios.get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {
-            
-      })
-        .then((response) => {
-          // console.log(response.data);
-          // next({
-          //   ...action,
-          //   data: response.data,
-          // });
-        })
-        .catch((error) => {
-          if (error.response.status === 404) store.dispatch(getPage404());
-        });
->>>>>>> 312e983619f06a3ef3636cf30b286f12faaf0558
     default:
       return next(action);
   }
