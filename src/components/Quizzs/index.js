@@ -19,10 +19,15 @@ class Quizzs extends Component {
     initialQuiz();
   };
 
+<<<<<<< HEAD
   handleClickFav = quizId => () => {
     console.log('send');
     const { toggleFavoris } = this.props;
     toggleFavoris(quizId);
+=======
+  handleClickFav = () => {
+    console.log('ok');
+>>>>>>> 312e983619f06a3ef3636cf30b286f12faaf0558
   }
 
   render() {
@@ -40,7 +45,11 @@ class Quizzs extends Component {
               >
                 {quiz.quizzs[0].title}
               </Link>
+<<<<<<< HEAD
               <FaRegHeart onClick={this.handleClickFav(quiz.quizzs[0].id)} color="#000" className="quizzs-fav" />
+=======
+              <FaRegHeart onClick={this.handleClickFav} color="#000" className="quizzs-fav" />
+>>>>>>> 312e983619f06a3ef3636cf30b286f12faaf0558
             </div>
           ))}
         </div>
