@@ -154,7 +154,20 @@ const ajaxMiddleware = store => next => action => {
         .post(`${process.env.API_URL}/api/signup`, signUpObject)
         .then(() => store.dispatch(signedUp()))
         .catch(() => store.dispatch(signeUpError()));
-
+    case ADD_OR_DELETE_FAV:
+      return axios.get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {
+            
+      })
+        .then((response) => {
+          // console.log(response.data);
+          // next({
+          //   ...action,
+          //   data: response.data,
+          // });
+        })
+        .catch((error) => {
+          if (error.response.status === 404) store.dispatch(getPage404());
+        });
     default:
       return next(action);
   }

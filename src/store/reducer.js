@@ -106,6 +106,9 @@ const RESET_MEMORY = 'RESET_MEMORY';
 //Puzzle
 export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
 export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
+
+// Favoris
+export const ADD_OR_DELETE_FAV = 'ADD_OR_DELETE_FAV';
 /**
  * Traitements
  */
@@ -556,6 +559,10 @@ export const resetMemory = () => ({
 export const dataForPuzzle = (puzzleId) => ({
   type: DATA_FOR_PUZZLE,
   puzzleId,
+})
+
+export const addOrDeleteFav = () => ({
+  type: ADD_OR_DELETE_FAV,
 })
 
 /**

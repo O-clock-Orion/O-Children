@@ -15,6 +15,10 @@ class Quizzs extends Component {
     initialQuiz();
   };
 
+  handleClickFav = () => {
+    console.log('ok');
+  }
+
   render() {
     const { quizzsByWorldId } = this.props;
     return (
@@ -29,7 +33,7 @@ class Quizzs extends Component {
               >
                 {quiz.quizzs[0].title}
               </Link>
-              <FaRegHeart color="#000" className="quizzs-fav" />
+              <FaRegHeart onClick={this.handleClickFav} color="#000" className="quizzs-fav" />
             </div>
           ))}
         </div>
