@@ -55,16 +55,14 @@ const ajaxMiddleware = store => next => action => {
           });
         });
     case QUIZ_BY_WORLD_ID:
-      next(action);
+      next(action)
       return axios
         .get(
           `${process.env.API_URL}/api/categories/${action.worldId}/quizzs`,
           {}
         )
         .then(response => {
-          store.dispatch(
-            receivedDataQuizzes(response.data, response.data[0].name)
-          );
+          store.dispatch(receivedDataQuizzes(response.data, response.data[0].name))
         })
         .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
@@ -73,14 +71,14 @@ const ajaxMiddleware = store => next => action => {
       next(action);
       return axios
         .get(`${process.env.API_URL}/api/quizzs/${action.id}`, {})
-        .then(({ data }) => {
-          data.questions.map(question => shuffle(question.answers));
+        .then(response => {
+          response.data.questions.map(data => shuffle(data.answers));
 
           store.dispatch(
             receivedDataQuestions(
-              shuffle(data.questions),
-              data.description,
-              data.title
+              shuffle(response.data.questions),
+              response.data.description,
+              response.data.title
             )
           );
         })
@@ -101,9 +99,10 @@ const ajaxMiddleware = store => next => action => {
         });
     case DATA_FOR_PUZZLE:
       next(action);
-      return axios
-        .get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {})
-        .then(response => {
+      return axios.get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {
+          
+      })
+        .then((response) => {
           store.dispatch(receivedDataPuzzle(response.data));
         })
         .catch(error => {

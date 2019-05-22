@@ -36,6 +36,7 @@ class MyPuzzle extends Component {
           {
             loaded && (
               <Fragment>
+                <h1>{ puzzle.title } </h1>
                 <div ref={this.puzzle}>
                   <MediaQuery query="(max-width: 768px)">
                     <Puzzle
@@ -78,6 +79,7 @@ MyPuzzle.propTypes = {
   puzzle: PropTypes.object.isRequired,
   dataForPuzzle: PropTypes.func.isRequired,
   puzzleId: PropTypes.string.isRequired,
+  loaded: PropTypes.bool.isRequired,
 };
 
 export default MyPuzzle;

@@ -50,10 +50,7 @@ const initialState = {
   finished: false,
   openedCard: [],
   descriptionCurrentQuiz: '',
-  currentNameQuiz: '',
-  nameCategoryQuiz: '',
-  quizzesLoaded: false,
-  questionLoaded: false
+  currentNameQuiz: ''
 };
 
 /**
@@ -94,7 +91,6 @@ const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
 export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 export const ERROR_404 = 'ERROR_404';
-export const RECEIVED_DATA_QUIZZES = 'RECEIVED_DATA_QUIZZES';
 
 // memory
 const COUNT_PAIRS = 'COUNT_PAIRS';
@@ -109,13 +105,10 @@ const RESET_MEMORY = 'RESET_MEMORY';
 // Puzzle
 export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
 export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
-const RECEIVED_DATA_PUZZLE = 'RECEIVED_DATA_PUZZLE';
 
 // User
 export const GET_USER_INFOS = 'GET_USER_INFOS';
 
-// Favoris
-export const TOGGLE_FAVORIS = 'TOGGLE_FAVORIS';
 /**
  * Traitements
  */
@@ -263,27 +256,21 @@ const reducer = (state = initialState, action = {}) => {
         currrentSlugCatQuizzs: action.slug
       };
     case QUIZ_BY_WORLD_ID:
+      console.log(action)
       return {
         ...state,
-        quizzesLoaded: false
-      };
-    case RECEIVED_DATA_QUIZZES:
-      return {
-        ...state,
-        quizzsByWorldId: action.dataQuiz,
-        nameCategoryQuiz: action.nameCatQuiz,
-        error404: false,
-        quizzesLoaded: true
+        quizzsByWorldId: action.data,
+        error404: false
       };
     case QUESTION_BY_ID:
       return {
         ...state,
-        questionLoaded: false
+        loaded: false
       };
     case RECEIVED_DATA_QUESTIONS:
       return {
         ...state,
-        questionLoaded: true,
+        loaded: true,
         questionsOfQuiz: [...action.dataQuestions],
         descriptionCurrentQuiz: action.dataDescription,
         currentNameQuiz: action.dataName,
@@ -332,18 +319,12 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_FOR_PUZZLES:
       return {
         ...state,
-        puzzles: action.data
-      };
-    case RECEIVED_DATA_PUZZLE:
-      return {
-        ...state,
-        loaded: true,
-        puzzle: { ...action.data }
+        puzzles: [...action.data]
       };
     case DATA_FOR_PUZZLE:
       return {
         ...state,
-        loaded: false
+        puzzle: { ...action.data }
       };
     case COUNT_PAIRS:
       return {
@@ -583,26 +564,6 @@ export const dataForPuzzle = puzzleId => ({
 export const getUserInfos = data => ({
   type: GET_USER_INFOS,
   data
-});
-
-export const toggleFavoris = (quizId) => ({
-  type: TOGGLE_FAVORIS,
-  quizId,
-})
-
-export const addOrDeleteFav = () => ({
-  type: ADD_OR_DELETE_FAV,
-})
-
-export const receivedDataPuzzle = data => ({
-  type: RECEIVED_DATA_PUZZLE,
-  data
-});
-
-export const receivedDataQuizzes = (dataQuiz, nameCatQuiz) => ({
-  type: RECEIVED_DATA_QUIZZES,
-  dataQuiz,
-  nameCatQuiz
 });
 
 /**

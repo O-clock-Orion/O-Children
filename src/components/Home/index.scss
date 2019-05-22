@@ -7,6 +7,7 @@
     margin-top: 2em !important;
     text-align: center;
     font-family: 'Love Ya Like A Sister', sans-serif;
+    color: lightgreen;
 
     @media screen and (min-width: 769px) {
       margin-top: 1.5em !important;
@@ -82,25 +83,6 @@
         }
       }
     }
-
-    // &-one {
-    //     img {
-    //         margin-top: 15px;
-    //     }
-
-    //     @media screen and (min-width: 769px) {
-    //         margin-right: 60px;
-    //     }
-    // }
-
-    // &-two {
-    //     margin-top: 5em;
-
-    //     @media screen and (min-width: 769px) {
-    //         margin-left: 60px;
-    //         margin-top: 0;
-    //     }
-    // }
   }
 }
 

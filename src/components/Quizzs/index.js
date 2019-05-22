@@ -24,14 +24,13 @@ class Quizzs extends Component {
   };
 
   handleClickFav = quizId => () => {
-    console.log('send');
     const { toggleFavoris } = this.props;
     toggleFavoris(quizId);
   };
 
   render() {
     const { quizzsByWorldId } = this.props;
-    console.log(quizzsByWorldId);
+    // console.log(quizzsByWorldId);
     return (
       <div className="quizzs">
         <div className="wrapper-quizzs">
